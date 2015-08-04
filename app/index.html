@@ -5,14 +5,19 @@
 <body data-ng-app="cars">
 	<main data-ng-controller="carController">
 		<h1>Cars</h1>
+		<!--
 		<input type="text" name="make" data-ng-model="make">
 		<input type="text" name="model" data-ng-model="model">
 		<input type="text" name="year" data-ng-model="year">
+		-->
+		<button data-ng-click="carLoader()">Car</button>
+		<button data-ng-click="anotherCar()">Truck</button>
 		<ul>
 			<li>{{make}}</li>
 			<li>{{model}}</li>
 			<li>{{year}}</li>
 		</ul>
+		<h2>I drive a {{car}}!</h2>
 	</main>
 	<script src="bundle.js"></script>
 </body>
