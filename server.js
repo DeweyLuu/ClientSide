@@ -8,10 +8,9 @@ var router = express.Router();
 
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/herolist');
 
-//console.log(process.env);
+require('./routes/heroroutes')(router);
 
-//require('./routes/heroroutes')(router);
-//app.use('/api', router);
+app.use('/api', router);
 
 app.listen(3000, function() {
 	console.log('server started');
