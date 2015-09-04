@@ -2,18 +2,57 @@
 <head>
 	<title>RestApi Angular</title>
 </head>
-<body data-ng-app="cars">
-	<main data-ng-controller="carController">
-		<h1>Cars</h1>
+<body data-ng-app="herosApp">
+	<h1>Heros</h1>
+
+	<main data-ng-controller="herosController" data-ng-init="getAll()">
+
+		<form data-ng-submit="create(newHero)">
+			<label>New Hero Creator</label>
+			<input type="text" required data-ng-model="newHero.name">
+			<input type="text" required data-ng-model="newHero.weapon">
+			<input type="text" required data-ng-model="newHero.strength">
+			<button type="submit">Create new HERO!</button>
+		</form>
+
+		<ul>
+			<li data-ng-repeat="hero in heros">
+				{{"Name: " + hero.name}}
+				<form data-ng-if="hero.edit" name="{{hero._id}}form" data-ng-submit="update(hero)">
+					<p>Name: {{hero.name}}</p>
+					<input type="text" data-ng-model="hero.name">
+					<p>Weapon: {{hero.weapon}}</p>
+					<input type="text" data-ng-model="hero.weapon">
+					<p>Strength: {{hero.strength}}</p>
+					<input type="text" data-ng-model="hero.strength">
+
+					<button type="submit">Save</button>
+					<button data-ng-click="hero.edit = false">Cancel</button>
+				</form>
+				<button data-ng-if="!hero.edit" data-ng-click="hero.edit = true">Edit</button>
+				<button name="deletebutton" data-ng-click="destroy(hero)">Delete</button>
+			<ul>
+				<li>{{"Weapon: " + hero.weapon}}</li>
+				<li>{{"Strength: " + hero.strength}}</li>
+			</ul>
+			</li>
+		</ul>
+
+	</main>
+		<!--
 		<input type="text" name="make" data-ng-model="make">
 		<input type="text" name="model" data-ng-model="model">
 		<input type="text" name="year" data-ng-model="year">
+
+		<button data-ng-click="carLoader()">Car</button>
+		<button data-ng-click="anotherCar()">Truck</button>
 		<ul>
 			<li>{{make}}</li>
 			<li>{{model}}</li>
 			<li>{{year}}</li>
 		</ul>
-	</main>
+		<h2>I drive a {{car}}!</h2>
+	-->
 	<script src="bundle.js"></script>
 </body>
 </html>
